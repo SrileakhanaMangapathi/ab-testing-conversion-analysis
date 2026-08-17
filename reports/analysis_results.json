@@ -1,0 +1,41 @@
+{
+  "data_quality": {
+    "rows": 588101,
+    "unique_users": 588101,
+    "duplicate_users": 0,
+    "missing_values": 0
+  },
+  "primary_test": {
+    "treatment_group": "ad",
+    "control_group": "psa",
+    "treatment_users": 564577,
+    "control_users": 23524,
+    "treatment_conversions": 14423,
+    "control_conversions": 420,
+    "treatment_rate": 0.025546559636683747,
+    "control_rate": 0.01785410644448223,
+    "absolute_lift": 0.007692453192201517,
+    "relative_lift": 0.43085064022225833,
+    "confidence_level": 0.95,
+    "ci_lower": 0.0059509324316110055,
+    "ci_upper": 0.009433973952792028,
+    "z_statistic": 7.3700781265454145,
+    "p_value": 1.7052807161559727e-13,
+    "statistically_significant": true
+  },
+  "power_analysis": {
+    "control_rate": 0.01785410644448223,
+    "observed_treatment_rate": 0.025546559636683747,
+    "observed_absolute_lift": 0.007692453192201517,
+    "control_users": 23524,
+    "treatment_users": 564577,
+    "allocation_ratio": 24.00004250977725,
+    "alpha": 0.05,
+    "achieved_power": 0.9999999990438161,
+    "target_power": 0.8,
+    "minimum_detectable_effect": 0.002,
+    "required_users_per_group": 72547,
+    "required_total_users": 145094
+  },
+  "recommendation": "roll_out_if_economically_positive"
+}
