@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-and-reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Run automated tests
+        run: python -m pytest
+
+      - name: Run analysis pipeline
+        run: python -m src.pipeline
+
+      - name: Execute analysis notebook
+        working-directory: notebooks
+        run: >-
+          python -m jupyter nbconvert
+          --to notebook
+          --execute ab_test_analysis.ipynb
+          --output /tmp/ab_test_analysis.ipynb
+          --ExecutePreprocessor.timeout=180
+
+      - name: Compile application modules
+        run: python -m py_compile app.py src/*.py

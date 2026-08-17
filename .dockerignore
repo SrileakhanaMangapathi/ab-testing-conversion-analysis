@@ -1,0 +1,8 @@
+.git
+.github
+.venv
+__pycache__
+.pytest_cache
+.ipynb_checkpoints
+*.py[cod]
+pytest-cache-files-*
